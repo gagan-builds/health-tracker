@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* Import Satoshi font from Fontshare */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Default Orange Theme (Strava-like) */
+    --color-primary-50: 255 244 237;
+    --color-primary-100: 255 229 212;
+    --color-primary-200: 255 198 168;
+    --color-primary-300: 255 159 113;
+    --color-primary-400: 255 111 55;
+    --color-primary-500: 252 76 2;
+    --color-primary-600: 236 51 0;
+    --color-primary-700: 197 32 0;
+    --color-primary-800: 157 25 8;
+    --color-primary-900: 126 23 10;
+  }
+
+  :root[data-theme="blue"] {
+    --color-primary-50: 239 246 255;
+    --color-primary-100: 219 234 254;
+    --color-primary-200: 191 219 254;
+    --color-primary-300: 147 197 253;
+    --color-primary-400: 96 165 250;
+    --color-primary-500: 59 130 246;
+    --color-primary-600: 37 99 235;
+    --color-primary-700: 29 78 216;
+    --color-primary-800: 30 64 175;
+    --color-primary-900: 30 58 138;
+  }
+
+  :root[data-theme="purple"] {
+    --color-primary-50: 250 245 255;
+    --color-primary-100: 243 232 255;
+    --color-primary-200: 233 213 255;
+    --color-primary-300: 216 180 254;
+    --color-primary-400: 192 132 252;
+    --color-primary-500: 168 85 247;
+    --color-primary-600: 147 51 234;
+    --color-primary-700: 126 34 206;
+    --color-primary-800: 107 33 168;
+    --color-primary-900: 88 28 135;
+  }
+
+  :root[data-theme="emerald"] {
+    --color-primary-50: 236 253 245;
+    --color-primary-100: 209 250 229;
+    --color-primary-200: 167 243 208;
+    --color-primary-300: 110 231 183;
+    --color-primary-400: 52 211 153;
+    --color-primary-500: 16 185 129;
+    --color-primary-600: 5 150 105;
+    --color-primary-700: 4 120 87;
+    --color-primary-800: 6 95 70;
+    --color-primary-900: 6 78 59;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-gray-100 font-sans antialiased transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-dark-card rounded-xl shadow-sm border border-gray-100 dark:border-dark-border p-6 transition-all;
+  }
+  
+  .input {
+    @apply w-full rounded-lg border border-gray-300 dark:border-dark-border bg-white dark:bg-slate-900 px-4 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:text-white transition-all;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-lg shadow-sm transition-all active:scale-95;
+  }
+}
+
+/* Recharts Customizations for Dark Mode */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  @apply stroke-gray-200 dark:stroke-dark-border;
+}
