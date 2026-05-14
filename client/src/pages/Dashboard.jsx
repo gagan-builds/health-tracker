@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://gagan-builds-health-tracker.onrender.com';
 import { AuthContext } from '../context/AuthContext';
 import { format, parseISO } from 'date-fns';
 import { motion } from 'framer-motion';
@@ -31,7 +31,7 @@ const Dashboard = () => {
       const res = await axios.get(`${API_URL}/api/health`);
       const sortedLogs = res.data.sort((a, b) => new Date(a.date) - new Date(b.date));
       setLogs(sortedLogs);
-      
+
       const today = new Date().toISOString().split('T')[0];
       const todayLog = sortedLogs.find(log => log.date.startsWith(today));
       if (todayLog) {
@@ -117,13 +117,13 @@ const Dashboard = () => {
 
       {/* Main Grid: 2 Columns */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
+
         {/* Left Column (Wider) */}
         <div className="lg:col-span-2 space-y-8">
           <WeeklyAnalytics chartData={chartData} />
-          
+
           {/* Quick Log Form */}
-          <motion.div 
+          <motion.div
             className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-xl border border-gray-100 dark:border-slate-700"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,25 +134,25 @@ const Dashboard = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    <Flame className="w-4 h-4 mr-1 text-orange-500"/> Calories (kcal)
+                    <Flame className="w-4 h-4 mr-1 text-orange-500" /> Calories (kcal)
                   </label>
                   <input type="number" name="calories" className="input bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-700" value={formData.calories} onChange={handleChange} />
                 </div>
                 <div>
                   <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    <Droplets className="w-4 h-4 mr-1 text-blue-500"/> Water (glasses)
+                    <Droplets className="w-4 h-4 mr-1 text-blue-500" /> Water (glasses)
                   </label>
                   <input type="number" name="waterIntake" className="input bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-700" value={formData.waterIntake} onChange={handleChange} />
                 </div>
                 <div>
                   <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    <Moon className="w-4 h-4 mr-1 text-indigo-500"/> Sleep (hours)
+                    <Moon className="w-4 h-4 mr-1 text-indigo-500" /> Sleep (hours)
                   </label>
                   <input type="number" name="sleepHours" className="input bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-700" value={formData.sleepHours} onChange={handleChange} step="0.5" />
                 </div>
                 <div>
                   <label className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    <Activity className="w-4 h-4 mr-1 text-green-500"/> Exercise (mins)
+                    <Activity className="w-4 h-4 mr-1 text-green-500" /> Exercise (mins)
                   </label>
                   <input type="number" name="exerciseMinutes" className="input bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-700" value={formData.exerciseMinutes} onChange={handleChange} />
                 </div>
@@ -173,8 +173,8 @@ const Dashboard = () => {
                   <input type="text" name="activityTitle" placeholder={`e.g. Lunch ${formData.activityType}`} className="input bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-700" value={formData.activityTitle} onChange={handleChange} />
                 </div>
               </div>
-              <motion.button 
-                type="submit" 
+              <motion.button
+                type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium py-3 px-4 rounded-xl shadow-md transition-all disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center mt-6"
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}

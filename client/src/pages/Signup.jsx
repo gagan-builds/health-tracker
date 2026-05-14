@@ -29,7 +29,11 @@ const Signup = () => {
       toast.success('Account created successfully!');
       navigate('/dashboard');
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Registration failed. Email might be in use.');
+      const errorMsg = err.response?.data?.message 
+        || err.response?.data 
+        || (err.message === 'Network Error' ? 'Cannot connect to server. Make sure the backend is running.' : err.message)
+        || 'Registration failed. Please try again.';
+      toast.error(errorMsg);
     } finally {
       setIsLoading(false);
     }
