@@ -31,8 +31,8 @@ Goal Tracking
 Progress Monitoring
 
 🌐 Deployment
-Frontend hosted on Vercel
-Backend hosted on Render
+Frontend hosted on Vercel -  https://health-tracker-nu-five.vercel.app/
+Backend hosted on Render  -  https://gagan-builds-health-tracker.onrender.com
 MongoDB Atlas cloud database
 
 🛠️ Built With
